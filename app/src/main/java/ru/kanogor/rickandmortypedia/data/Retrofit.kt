@@ -8,6 +8,7 @@ import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.http.GET
+import retrofit2.http.Query
 import javax.inject.Singleton
 
 private const val BASE_URL = "https://rickandmortyapi.com/api/"
@@ -36,6 +37,8 @@ object RetrofitInstance {
 interface SearchRickAndMorty {
 
     @GET("character")
-   suspend fun getCharacters() : Response<RickAndMortyCharactersDto>
+    suspend fun getCharacters(
+        @Query("page") page: Int
+    ): Response<RickAndMortyCharactersDto>
 
 }
