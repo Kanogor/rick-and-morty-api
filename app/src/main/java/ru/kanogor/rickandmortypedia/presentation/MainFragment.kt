@@ -5,17 +5,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
+import org.koin.androidx.viewmodel.ext.android.viewModel
 import androidx.lifecycle.lifecycleScope
 import androidx.paging.LoadState
-import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import ru.kanogor.rickandmortypedia.databinding.FragmentMainBinding
 import ru.kanogor.rickandmortypedia.presentation.recyclerview.CharactersAdapter
 import ru.kanogor.rickandmortypedia.presentation.recyclerview.LoadStateAdapter
 
-@AndroidEntryPoint
 class MainFragment : Fragment() {
 
     companion object {
@@ -24,7 +22,7 @@ class MainFragment : Fragment() {
 
     private var _binding: FragmentMainBinding? = null
     private val binding get() = _binding!!
-    private val viewModel: MainViewModel by viewModels()
+    private val viewModel by viewModel<MainViewModel>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

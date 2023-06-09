@@ -2,10 +2,8 @@ package ru.kanogor.rickandmortypedia.presentation
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import dagger.hilt.android.AndroidEntryPoint
 import ru.kanogor.rickandmortypedia.R
 
-@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
