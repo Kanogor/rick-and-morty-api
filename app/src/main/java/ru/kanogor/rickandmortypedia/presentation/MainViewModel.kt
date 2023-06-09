@@ -12,7 +12,7 @@ import ru.kanogor.rickandmortypedia.presentation.recyclerview.CharactersPagingSo
 import javax.inject.Inject
 
 @HiltViewModel
-class MainViewModel @Inject constructor(val getRickAndMortyCharactersUseCase: GetRickAndMortyCharactersUseCase) :
+class MainViewModel @Inject constructor(private val getRickAndMortyCharactersUseCase: GetRickAndMortyCharactersUseCase) :
     ViewModel() {
 
     var pagedCharacters: Flow<PagingData<Results>> = Pager(
