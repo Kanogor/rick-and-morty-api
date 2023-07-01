@@ -50,7 +50,6 @@ class MainFragment : Fragment() {
         charactersAdapter.loadStateFlow.onEach {
             binding.swipeRefresh.isRefreshing = it.refresh == LoadState.Loading
         }.launchIn(viewLifecycleOwner.lifecycleScope)
-
     }
 
     override fun onDestroy() {
