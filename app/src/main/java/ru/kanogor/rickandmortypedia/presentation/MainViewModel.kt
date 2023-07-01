@@ -23,5 +23,4 @@ class MainViewModel(
     companion object {
         private const val PAGE_SIZE = 20
     }
-
 }
