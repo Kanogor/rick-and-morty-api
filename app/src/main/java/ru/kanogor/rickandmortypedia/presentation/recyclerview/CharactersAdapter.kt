@@ -8,10 +8,15 @@ import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.bumptech.glide.Glide
+import ru.kanogor.rickandmortypedia.R
 import ru.kanogor.rickandmortypedia.databinding.RickAndMortyItemCharactersBinding
 import ru.kanogor.rickandmortypedia.entity.Results
 
 class CharactersAdapter : PagingDataAdapter<Results, CharactersViewHolder>(DiffUtilCallback()) {
+
+    companion object {
+        private const val ALIVE = "Alive"
+    }
 
     override fun onBindViewHolder(holder: CharactersViewHolder, position: Int) {
         val item = getItem(position)
@@ -21,13 +26,14 @@ class CharactersAdapter : PagingDataAdapter<Results, CharactersViewHolder>(DiffU
         val charGender = item?.gender
         val charLocation = item?.location?.name
         with(holder.binding) {
-            name.text = "Name: $charName"
-            status.text = "Status: $charStatus"
-            species.text = "Species: $charSpecies"
-            gender.text = "Gender: $charGender"
-            location.text = "Location: $charLocation"
+            name.text =
+                holder.itemView.context.getString(R.string.name, charName)
+            status.text = holder.itemView.context.getString(R.string.status, charStatus)
+            species.text = holder.itemView.context.getString(R.string.species, charSpecies)
+            gender.text = holder.itemView.context.getString(R.string.gender, charGender)
+            location.text = holder.itemView.context.getString(R.string.location, charLocation)
             statusColor.backgroundTintList = ColorStateList.valueOf(
-                if (charStatus == "Alive") Color.GREEN
+                if (charStatus == ALIVE) Color.GREEN
                 else Color.RED
             )
             item?.let {

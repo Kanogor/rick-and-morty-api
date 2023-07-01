@@ -14,9 +14,13 @@ class MainViewModel(
 ) : ViewModel() {
 
     var pagedCharacters: Flow<PagingData<Results>> = Pager(
-        config = PagingConfig(pageSize = 5),
+        config = PagingConfig(pageSize = PAGE_SIZE),
         pagingSourceFactory = {
             CharactersPagingSource(getRickAndMortyCharactersUseCase)
         }
     ).flow
+
+    companion object {
+        private const val PAGE_SIZE = 20
+    }
 }

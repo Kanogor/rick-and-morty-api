@@ -8,9 +8,8 @@ import ru.kanogor.rickandmortypedia.entity.Results
 class CharactersPagingSource(private val getRickAndMortyCharactersUseCase: GetRickAndMortyCharactersUseCase) :
     PagingSource<Int, Results>() {
     override fun getRefreshKey(state: PagingState<Int, Results>): Int = FIRST_PAGE
-
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, Results> {
-        val page = params.key ?: 1
+        val page = params.key ?: FIRST_PAGE
         return kotlin.runCatching {
             getRickAndMortyCharactersUseCase.execute(page)
         }.fold(
