@@ -1,1 +1,1 @@
-
+Compose, Koin, Retrofit, Pagination
