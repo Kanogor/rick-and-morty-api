@@ -6,8 +6,11 @@ import ru.kanogor.rickandmortypedia.presentation.MainViewModel
 
 val appModule = module {
 
-    viewModel<MainViewModel> {
-        MainViewModel(getRickAndMortyCharactersUseCase = get())
+    viewModel {
+        MainViewModel(
+            getRickAndMortyCharactersUseCase = get(),
+            getRickAndMortyLocationsUseCase = get()
+        )
     }
 
 }

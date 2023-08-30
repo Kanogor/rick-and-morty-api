@@ -1,18 +1,18 @@
 package ru.kanogor.rickandmortypedia.entity
 
 interface RickAndMortyCharacters {
-    val info: Info
-    val results: List<Results>
+    val infoChar: InfoChar
+    val results: List<CharacterData>
 }
 
-interface Info {
+interface InfoChar {
     val count: Int
     val pages: Int
     val next: String?
     val prev: String?
 }
 
-interface Results {
+interface CharacterData {
     val id: Int
     val name: String
     val status: String
@@ -20,14 +20,14 @@ interface Results {
     val type: String
     val gender: String
     val origin: Origin
-    val location: Location
+    val locationCharData: LocationCharData
     val image: String
     val episode: List<String>
     val url: String
     val created: String
 }
 
-interface Location {
+interface LocationCharData {
     val name: String
     val url: String
 }

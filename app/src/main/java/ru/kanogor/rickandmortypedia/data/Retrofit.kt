@@ -11,4 +11,9 @@ interface SearchRickAndMorty {
         @Query("page") page: Int
     ): Response<RickAndMortyCharactersDto>
 
+    @GET("location")
+    suspend fun getLocation(
+        @Query("page") page: Int
+    ): Response<RickAndMortyLocationsDto>
+
 }

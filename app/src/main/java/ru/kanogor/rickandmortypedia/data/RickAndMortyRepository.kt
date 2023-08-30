@@ -1,6 +1,7 @@
 package ru.kanogor.rickandmortypedia.data
 
 import ru.kanogor.rickandmortypedia.entity.RickAndMortyCharacters
+import ru.kanogor.rickandmortypedia.entity.RickAndMortyLocations
 
 class RickAndMortyRepository(private val searchRickAndMorty: SearchRickAndMorty) {
 
@@ -8,4 +9,10 @@ class RickAndMortyRepository(private val searchRickAndMorty: SearchRickAndMorty)
         val getApi = searchRickAndMorty.getCharacters(page)
         return getApi.body()!!
     }
+
+    suspend fun getLocations(page: Int): RickAndMortyLocations {
+        val getApi = searchRickAndMorty.getLocation(page)
+        return getApi.body()!!
+    }
+
 }
