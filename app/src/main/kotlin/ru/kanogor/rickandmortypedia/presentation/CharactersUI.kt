@@ -194,7 +194,7 @@ fun CharacterSingleItem(character: CharacterData, onClick: () -> Unit, context: 
                         color = Color.White
                     )
                 },
-                colors = TopAppBarDefaults.smallTopAppBarColors(containerColor = GreyBackground),
+                colors = TopAppBarDefaults.topAppBarColors(containerColor = GreyBackground),
                 modifier = Modifier
                     .shadow(
                         elevation = AppBarDefaults.TopAppBarElevation,

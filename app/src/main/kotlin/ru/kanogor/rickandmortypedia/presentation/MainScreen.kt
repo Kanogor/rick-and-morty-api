@@ -1,6 +1,5 @@
 package ru.kanogor.rickandmortypedia.presentation
 
-import android.util.Log
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.Tab
@@ -70,7 +69,6 @@ fun MainScreen(
             state = pagerState,
             modifier = Modifier.weight(1f)
         ) { index ->
-            Log.d("HorizontalPager", "index -> $index")
             val screen = when (index) {
                 0 -> Screen.CharacterList
                 1 -> Screen.LocationsList
