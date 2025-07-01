@@ -3,7 +3,6 @@ package ru.kanogor.rickandmortypedia.presentation
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.runtime.rememberCoroutineScope
 import com.arkivanov.decompose.defaultComponentContext
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import ru.kanogor.rickandmortypedia.presentation.main.MainViewModel
