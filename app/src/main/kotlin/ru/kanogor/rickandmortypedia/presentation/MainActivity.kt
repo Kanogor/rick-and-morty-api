@@ -9,7 +9,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import org.koin.androidx.viewmodel.ext.android.viewModel
-import ru.kanogor.rickandmortypedia.entity.CharacterData
+import ru.kanogor.rickandmortypedia.domain.entity.CharacterData
 
 class MainActivity : ComponentActivity() {
 

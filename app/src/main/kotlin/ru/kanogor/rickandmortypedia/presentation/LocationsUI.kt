@@ -19,7 +19,7 @@ import androidx.paging.LoadState
 import androidx.paging.compose.collectAsLazyPagingItems
 import androidx.paging.compose.itemContentType
 import androidx.paging.compose.itemKey
-import ru.kanogor.rickandmortypedia.entity.LocationData
+import ru.kanogor.rickandmortypedia.domain.entity.LocationData
 import ru.kanogor.rickandmortypedia.presentation.theme.GreyBackground
 import ru.kanogor.rickandmortypedia.presentation.theme.GreyText
 

@@ -1,7 +1,7 @@
 package ru.kanogor.rickandmortypedia.data
 
-import ru.kanogor.rickandmortypedia.entity.RickAndMortyCharacters
-import ru.kanogor.rickandmortypedia.entity.RickAndMortyLocations
+import ru.kanogor.rickandmortypedia.domain.entity.RickAndMortyCharacters
+import ru.kanogor.rickandmortypedia.domain.entity.RickAndMortyLocations
 
 class RickAndMortyRepository(private val searchRickAndMorty: SearchRickAndMorty) {
 

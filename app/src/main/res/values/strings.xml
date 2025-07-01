@@ -7,4 +7,6 @@
     <string name="species_and_gender">Species and gender</string>
     <string name="episodes">Episodes:</string>
     <string name="oops">Oops, something went wrong</string>
+    <string name="characters">Characters</string>
+    <string name="locations">Locations</string>
 </resources>

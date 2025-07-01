@@ -3,7 +3,7 @@ package ru.kanogor.rickandmortypedia.data
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
-import ru.kanogor.rickandmortypedia.entity.RickAndMortyLocations
+import ru.kanogor.rickandmortypedia.domain.entity.RickAndMortyLocations
 
 @JsonClass(generateAdapter = true)
 data class RickAndMortyLocationsDto(
@@ -15,7 +15,7 @@ data class RickAndMortyLocationsDto(
 data class InfoLocation(
     @Json(name = "count") override val count: Int,
     @Json(name = "pages") override val pages: Int
-) : ru.kanogor.rickandmortypedia.entity.InfoLocation
+) : ru.kanogor.rickandmortypedia.domain.entity.InfoLocation
 
 @JsonClass(generateAdapter = true)
 data class LocationData(
@@ -23,4 +23,4 @@ data class LocationData(
     @Json(name = "name") override val name: String,
     @Json(name = "type") override val type: String,
     @Json(name = "dimension") override val dimension: String
-) : ru.kanogor.rickandmortypedia.entity.LocationData
+) : ru.kanogor.rickandmortypedia.domain.entity.LocationData

@@ -2,11 +2,11 @@ package ru.kanogor.rickandmortypedia.data
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
-import ru.kanogor.rickandmortypedia.entity.*
-import ru.kanogor.rickandmortypedia.entity.InfoChar
-import ru.kanogor.rickandmortypedia.entity.LocationCharData
-import ru.kanogor.rickandmortypedia.entity.Origin
-import ru.kanogor.rickandmortypedia.entity.CharacterData
+import ru.kanogor.rickandmortypedia.domain.entity.InfoChar
+import ru.kanogor.rickandmortypedia.domain.entity.LocationCharData
+import ru.kanogor.rickandmortypedia.domain.entity.Origin
+import ru.kanogor.rickandmortypedia.domain.entity.CharacterData
+import ru.kanogor.rickandmortypedia.domain.entity.RickAndMortyCharacters
 
 @JsonClass(generateAdapter = true)
 data class RickAndMortyCharactersDto(

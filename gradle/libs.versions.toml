@@ -44,7 +44,6 @@ material = "1.12.0"
 coil = "2.0.0-rc01"
 compose-material = "1.6.0-alpha03"
 lifecycle = "2.9.1"
-accompanist-pager = "0.36.0"
 foundation = "1.8.3"
 serializationVersion = "1.8.1"
 volley = "1.2.1"
@@ -121,8 +120,6 @@ paging-compose = { group = "androidx.paging", name = "paging-compose", version.r
 compose-material = { group = "androidx.compose.material", name = "material", version.ref = "compose-material" }
 lifecycle-livedata-ktx = { group = "androidx.lifecycle", name = "lifecycle-livedata-ktx", version.ref = "lifecycle" }
 lifecycle-viewmodel-ktx = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-ktx", version.ref = "lifecycle" }
-accompanist-pager = { group = "com.google.accompanist", name = "accompanist-pager", version.ref = "accompanist-pager" }
-accompanist-pager-indicators = { group = "com.google.accompanist", name = "accompanist-pager-indicators", version.ref = "accompanist-pager" }
 foundation = { group = "androidx.compose.foundation", name = "foundation", version.ref = "foundation" }
 foundation-layout = { group = "androidx.compose.foundation", name = "foundation-layout", version.ref = "foundation" }
 

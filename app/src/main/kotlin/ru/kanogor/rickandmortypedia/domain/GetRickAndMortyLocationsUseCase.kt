@@ -2,7 +2,7 @@ package ru.kanogor.rickandmortypedia.domain
 
 import kotlinx.coroutines.delay
 import ru.kanogor.rickandmortypedia.data.RickAndMortyRepository
-import ru.kanogor.rickandmortypedia.entity.LocationData
+import ru.kanogor.rickandmortypedia.domain.entity.LocationData
 
 class GetRickAndMortyLocationsUseCase(private val repository: RickAndMortyRepository) {
 

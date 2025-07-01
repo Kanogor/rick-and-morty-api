@@ -4,7 +4,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import ru.kanogor.rickandmortypedia.domain.GetRickAndMortyCharactersUseCase
-import ru.kanogor.rickandmortypedia.entity.CharacterData
+import ru.kanogor.rickandmortypedia.domain.entity.CharacterData
 
 class CharactersPagingSource(
     private val getRickAndMortyCharactersUseCase: GetRickAndMortyCharactersUseCase,

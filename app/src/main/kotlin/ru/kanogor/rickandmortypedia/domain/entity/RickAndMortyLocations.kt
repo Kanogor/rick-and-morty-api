@@ -1,4 +1,4 @@
-package ru.kanogor.rickandmortypedia.entity
+package ru.kanogor.rickandmortypedia.domain.entity
 
 interface RickAndMortyLocations {
     val info: InfoLocation

@@ -10,8 +10,8 @@ import androidx.paging.cachedIn
 import kotlinx.coroutines.flow.Flow
 import ru.kanogor.rickandmortypedia.domain.GetRickAndMortyCharactersUseCase
 import ru.kanogor.rickandmortypedia.domain.GetRickAndMortyLocationsUseCase
-import ru.kanogor.rickandmortypedia.entity.CharacterData
-import ru.kanogor.rickandmortypedia.entity.LocationData
+import ru.kanogor.rickandmortypedia.domain.entity.CharacterData
+import ru.kanogor.rickandmortypedia.domain.entity.LocationData
 import ru.kanogor.rickandmortypedia.presentation.pagingsource.CharactersPagingSource
 import ru.kanogor.rickandmortypedia.presentation.pagingsource.LocationsPagingSource
 
