@@ -1,6 +1,6 @@
 @file:OptIn(ExperimentalMaterial3Api::class)
 
-package ru.kanogor.rickandmortypedia.presentation
+package ru.kanogor.rickandmortypedia.presentation.characters
 
 import android.annotation.SuppressLint
 import android.content.Context
@@ -52,6 +52,11 @@ import coil.compose.AsyncImage
 import ru.kanogor.rickandmortypedia.R
 import ru.kanogor.rickandmortypedia.data.EpisodeDto
 import ru.kanogor.rickandmortypedia.domain.entity.CharacterData
+import ru.kanogor.rickandmortypedia.presentation.charDetail.EpisodeCard
+import ru.kanogor.rickandmortypedia.presentation.ErrorItem
+import ru.kanogor.rickandmortypedia.presentation.LoadingItem
+import ru.kanogor.rickandmortypedia.presentation.MainViewModel
+import ru.kanogor.rickandmortypedia.presentation.charDetail.getEpisodeData
 import ru.kanogor.rickandmortypedia.presentation.theme.GreyBackground
 import ru.kanogor.rickandmortypedia.presentation.theme.GreyText
 
@@ -63,7 +68,7 @@ fun CharactersList(
     onClick: () -> Unit,
     charItem: MutableState<CharacterData?>
 ) {
-    val pagedCharacters = viewModel.pagedCharacters.collectAsLazyPagingItems()
+    val pagedCharacters = viewModel.pagedCharacters().collectAsLazyPagingItems()
     pagedCharacters.refresh()
     LazyColumn {
         items(

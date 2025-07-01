@@ -1,4 +1,4 @@
-package ru.kanogor.rickandmortypedia.presentation
+package ru.kanogor.rickandmortypedia.presentation.locations
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -17,21 +17,22 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.paging.LoadState
 import androidx.paging.compose.collectAsLazyPagingItems
-import androidx.paging.compose.itemContentType
 import androidx.paging.compose.itemKey
 import ru.kanogor.rickandmortypedia.domain.entity.LocationData
+import ru.kanogor.rickandmortypedia.presentation.ErrorItem
+import ru.kanogor.rickandmortypedia.presentation.LoadingItem
+import ru.kanogor.rickandmortypedia.presentation.MainViewModel
 import ru.kanogor.rickandmortypedia.presentation.theme.GreyBackground
 import ru.kanogor.rickandmortypedia.presentation.theme.GreyText
 
 @Composable
 fun LocationsList(viewModel: MainViewModel) {
-    val pagedLocations = viewModel.pagedLocations.collectAsLazyPagingItems()
+    val pagedLocations = viewModel.pagedLocations().collectAsLazyPagingItems()
     pagedLocations.refresh()
     LazyColumn {
         items(
             count = pagedLocations.itemCount,
             key = pagedLocations.itemKey { it.id },
-            contentType = pagedLocations.itemContentType { "location" }
         ) { index ->
             val item = pagedLocations[index]
             LocationListItem(item = item!!)

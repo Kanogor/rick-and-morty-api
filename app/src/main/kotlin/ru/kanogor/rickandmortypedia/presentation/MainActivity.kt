@@ -10,6 +10,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import ru.kanogor.rickandmortypedia.domain.entity.CharacterData
+import ru.kanogor.rickandmortypedia.presentation.characters.CharacterSingleItem
 
 class MainActivity : ComponentActivity() {
 

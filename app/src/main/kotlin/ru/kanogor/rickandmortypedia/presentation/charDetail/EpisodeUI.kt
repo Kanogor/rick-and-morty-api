@@ -1,4 +1,4 @@
-package ru.kanogor.rickandmortypedia.presentation
+package ru.kanogor.rickandmortypedia.presentation.charDetail
 
 import android.content.Context
 import android.util.Log

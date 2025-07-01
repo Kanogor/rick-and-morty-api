@@ -19,7 +19,9 @@ import androidx.compose.ui.unit.dp
 import kotlinx.coroutines.launch
 import ru.kanogor.rickandmortypedia.R
 import ru.kanogor.rickandmortypedia.domain.entity.CharacterData
+import ru.kanogor.rickandmortypedia.presentation.characters.CharactersList
 import ru.kanogor.rickandmortypedia.presentation.components.TabItem
+import ru.kanogor.rickandmortypedia.presentation.locations.LocationsList
 import ru.kanogor.rickandmortypedia.presentation.theme.GreyBackground
 import ru.kanogor.rickandmortypedia.presentation.theme.GreyCard
 

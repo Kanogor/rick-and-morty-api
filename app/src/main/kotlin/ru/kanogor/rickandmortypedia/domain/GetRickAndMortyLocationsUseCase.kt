@@ -1,13 +1,13 @@
 package ru.kanogor.rickandmortypedia.domain
 
-import kotlinx.coroutines.delay
+import androidx.paging.PagingData
+import kotlinx.coroutines.flow.Flow
 import ru.kanogor.rickandmortypedia.data.RickAndMortyRepository
 import ru.kanogor.rickandmortypedia.domain.entity.LocationData
 
 class GetRickAndMortyLocationsUseCase(private val repository: RickAndMortyRepository) {
 
-    suspend fun execute(page: Int): List<LocationData> {
-        delay(2000)  // для более плавной загрузки страниц
-        return repository.getLocations(page).result
+    fun execute(): Flow<PagingData<LocationData>> {
+        return repository.getLocations()
     }
 }

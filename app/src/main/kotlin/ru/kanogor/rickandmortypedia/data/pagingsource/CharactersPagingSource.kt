@@ -1,34 +1,31 @@
-package ru.kanogor.rickandmortypedia.presentation.pagingsource
+package ru.kanogor.rickandmortypedia.data.pagingsource
 
-import androidx.lifecycle.MutableLiveData
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
-import ru.kanogor.rickandmortypedia.domain.GetRickAndMortyCharactersUseCase
+import ru.kanogor.rickandmortypedia.data.SearchRickAndMorty
 import ru.kanogor.rickandmortypedia.domain.entity.CharacterData
 
 class CharactersPagingSource(
-    private val getRickAndMortyCharactersUseCase: GetRickAndMortyCharactersUseCase,
-    private val throwable: MutableLiveData<Throwable?>
+    private val api: SearchRickAndMorty,
 ) :
     PagingSource<Int, CharacterData>() {
     override fun getRefreshKey(state: PagingState<Int, CharacterData>): Int = FIRST_PAGE
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, CharacterData> {
         val page = params.key ?: FIRST_PAGE
         return kotlin.runCatching {
-            getRickAndMortyCharactersUseCase.execute(page)
+            api.getCharacters(page)
         }.fold(
             onSuccess = {
-                throwable.value = null
+                val characterList = it.body()?.results ?: emptyList()
                 LoadResult.Page(
-                    data = it,
+                    data = characterList,
                     prevKey = null,
-                    nextKey = if (it.isEmpty()) null else {
+                    nextKey = if (characterList.isEmpty()) null else {
                         page + 1
                     },
                 )
             },
             onFailure = {
-                throwable.value = it
                 LoadResult.Error(it)
             }
         )
