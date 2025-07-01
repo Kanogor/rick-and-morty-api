@@ -21,7 +21,7 @@ import com.android.volley.Request
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import org.json.JSONObject
-import ru.kanogor.rickandmortypedia.data.EpisodeDto
+import ru.kanogor.rickandmortypedia.data.dto.EpisodeDto
 import ru.kanogor.rickandmortypedia.presentation.theme.GreyCard
 import ru.kanogor.rickandmortypedia.presentation.theme.GreyText
 

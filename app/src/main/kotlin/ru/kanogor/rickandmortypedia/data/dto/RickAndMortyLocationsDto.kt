@@ -1,4 +1,4 @@
-package ru.kanogor.rickandmortypedia.data
+package ru.kanogor.rickandmortypedia.data.dto
 
 
 import com.squareup.moshi.Json

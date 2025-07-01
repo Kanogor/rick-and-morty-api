@@ -1,4 +1,4 @@
-package ru.kanogor.rickandmortypedia.data
+package ru.kanogor.rickandmortypedia.data.dto
 
 data class EpisodeDto(
 val name: String,

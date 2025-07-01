@@ -50,7 +50,7 @@ import androidx.paging.compose.itemContentType
 import androidx.paging.compose.itemKey
 import coil.compose.AsyncImage
 import ru.kanogor.rickandmortypedia.R
-import ru.kanogor.rickandmortypedia.data.EpisodeDto
+import ru.kanogor.rickandmortypedia.data.dto.EpisodeDto
 import ru.kanogor.rickandmortypedia.domain.entity.CharacterData
 import ru.kanogor.rickandmortypedia.presentation.charDetail.EpisodeCard
 import ru.kanogor.rickandmortypedia.presentation.ErrorItem
