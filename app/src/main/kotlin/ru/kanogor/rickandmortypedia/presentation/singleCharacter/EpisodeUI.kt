@@ -1,4 +1,4 @@
-package ru.kanogor.rickandmortypedia.presentation.charDetail
+package ru.kanogor.rickandmortypedia.presentation.singleCharacter
 
 import android.content.Context
 import android.util.Log
@@ -25,6 +25,7 @@ import ru.kanogor.rickandmortypedia.data.dto.EpisodeDto
 import ru.kanogor.rickandmortypedia.presentation.theme.GreyCard
 import ru.kanogor.rickandmortypedia.presentation.theme.GreyText
 
+// TODO это пиздец, только ломать)
 
 fun getEpisodeData(
     url: String,

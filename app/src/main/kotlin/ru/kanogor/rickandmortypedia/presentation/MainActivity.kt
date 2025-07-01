@@ -3,14 +3,12 @@ package ru.kanogor.rickandmortypedia.presentation
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.navigation.compose.NavHost
-import androidx.navigation.compose.composable
-import androidx.navigation.compose.rememberNavController
+import androidx.compose.runtime.rememberCoroutineScope
+import com.arkivanov.decompose.defaultComponentContext
 import org.koin.androidx.viewmodel.ext.android.viewModel
-import ru.kanogor.rickandmortypedia.domain.entity.CharacterData
-import ru.kanogor.rickandmortypedia.presentation.characters.CharacterSingleItem
+import ru.kanogor.rickandmortypedia.presentation.main.MainViewModel
+import ru.kanogor.rickandmortypedia.presentation.navigation.NavigationComponentImpl
+import ru.kanogor.rickandmortypedia.presentation.navigation.NavigationUi
 
 class MainActivity : ComponentActivity() {
 
@@ -18,26 +16,18 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            val navController = rememberNavController()
-            val charItem = remember {
-                mutableStateOf<CharacterData?>(null)
-            }
-            NavHost(
-                navController = navController,
-                startDestination = Screen.MainScreen.route
-            ) {
-                composable(Screen.MainScreen.route) {
-                    MainScreen(viewModel, charItem = charItem, onClick = {
-                        navController.navigate(Screen.CharacterItem.route)
-                    })
-                }
-                composable(Screen.CharacterItem.route) {
-                    CharacterSingleItem(character = charItem.value!!, onClick = {
-                        navController.navigate(Screen.MainScreen.route)
-                    }, context = this@MainActivity)
-                }
-            }
+            val navigationComponent = NavigationComponentImpl(
+                componentContext = defaultComponentContext(),
+                getSingleCharacterData = { id ->
+                    viewModel.getSingleCharacterFlow(id)
+                },
+                locationsData = viewModel.pagedLocations(),
+                charactersData = viewModel.pagedCharacters()
+            )
 
+            NavigationUi(
+                component = navigationComponent
+            )
         }
     }
 }

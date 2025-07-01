@@ -1,4 +1,4 @@
-package ru.kanogor.rickandmortypedia.presentation
+package ru.kanogor.rickandmortypedia.presentation.components
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth

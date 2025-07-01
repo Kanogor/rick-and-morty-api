@@ -1,4 +1,4 @@
-package ru.kanogor.rickandmortypedia.presentation
+package ru.kanogor.rickandmortypedia.presentation.main
 
 sealed class Screen(val route: String) {
     data object CharacterItem : Screen("character_item")
