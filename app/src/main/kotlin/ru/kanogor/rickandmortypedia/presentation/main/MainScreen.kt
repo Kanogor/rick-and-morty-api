@@ -22,7 +22,9 @@ import ru.kanogor.rickandmortypedia.R
 import ru.kanogor.rickandmortypedia.presentation.characters.CharactersUi
 import ru.kanogor.rickandmortypedia.presentation.locations.LocationsUi
 import ru.kanogor.rickandmortypedia.presentation.theme.GreyBackground
+import ru.kanogor.rickandmortypedia.presentation.theme.GreyCard
 
+// TODO рефакторинг, добавить перелистывание страниц про свайпу
 @Composable
 fun MainScreen(
     component: MainComponent
