@@ -16,6 +16,7 @@ import ru.kanogor.rickandmortypedia.presentation.characters.CharactersComponentI
 import ru.kanogor.rickandmortypedia.presentation.components.toStateFlow
 import ru.kanogor.rickandmortypedia.presentation.locations.LocationsComponent
 import ru.kanogor.rickandmortypedia.presentation.locations.LocationsComponentImpl
+import kotlin.enums.EnumEntries
 
 interface MainComponent {
 
@@ -27,6 +28,8 @@ interface MainComponent {
         class Characters(val component: CharactersComponent) : MainChild
         class Locations(val component: LocationsComponent) : MainChild
     }
+
+    val mainTabs: EnumEntries<MainTabs>
 
 }
 
@@ -43,6 +46,8 @@ class MainComponentImpl(
         navigation.bringToFront(config)
     }
 
+    override val mainTabs: EnumEntries<MainTabs> = MainTabs.entries
+
     override val mainChildStack = childStack(
         serializer = ChildConfig.serializer(),
         source = navigation,
@@ -54,7 +59,7 @@ class MainComponentImpl(
     private fun createChild(
         config: ChildConfig,
         componentContext: ComponentContext
-    ) :MainComponent.MainChild = when (config) {
+    ): MainComponent.MainChild = when (config) {
         ChildConfig.Characters -> MainComponent.MainChild.Characters(
             component = CharactersComponentImpl(
                 componentContext = componentContext,
@@ -62,6 +67,7 @@ class MainComponentImpl(
                 navigateToSingleCharacter = navigateToSingleCharacter
             )
         )
+
         ChildConfig.Locations -> MainComponent.MainChild.Locations(
             component = LocationsComponentImpl(
                 componentContext = componentContext,
@@ -69,6 +75,11 @@ class MainComponentImpl(
             )
         )
     }
+}
+
+enum class MainTabs {
+    CHARACTERS,
+    LOCATIONS;
 }
 
 @Serializable

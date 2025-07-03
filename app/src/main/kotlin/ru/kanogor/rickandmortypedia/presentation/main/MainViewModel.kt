@@ -1,16 +1,8 @@
 package ru.kanogor.rickandmortypedia.presentation.main
 
-import android.util.Log
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
 import androidx.paging.PagingData
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.asStateFlow
-import kotlinx.coroutines.flow.catch
-import kotlinx.coroutines.flow.flow
-import kotlinx.coroutines.launch
 import ru.kanogor.rickandmortypedia.domain.GetRickAndMortyCharactersUseCase
 import ru.kanogor.rickandmortypedia.domain.GetRickAndMortyLocationsUseCase
 import ru.kanogor.rickandmortypedia.domain.GetSingleCharacterUseCase

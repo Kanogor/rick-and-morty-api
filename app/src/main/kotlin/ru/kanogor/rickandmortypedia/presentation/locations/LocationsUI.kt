@@ -26,42 +26,44 @@ import ru.kanogor.rickandmortypedia.presentation.theme.GreyText
 
 @Composable
 fun LocationsUi(
-    locationsComponent: LocationsComponent
+    locationsComponent: LocationsComponent?
 ) {
-    val pagedLocations = locationsComponent.locations.collectAsLazyPagingItems()
-    pagedLocations.refresh()
-    LazyColumn {
-        items(
-            count = pagedLocations.itemCount,
-            key = pagedLocations.itemKey { it.id },
-        ) { index ->
-            val item = pagedLocations[index]
-            if (item != null) {
-                LocationListItem(item = item)
+    if (locationsComponent != null) {
+        val pagedLocations = locationsComponent.locations.collectAsLazyPagingItems()
+        pagedLocations.refresh()
+        LazyColumn {
+            items(
+                count = pagedLocations.itemCount,
+                key = pagedLocations.itemKey { it.id },
+            ) { index ->
+                val item = pagedLocations[index]
+                if (item != null) {
+                    LocationListItem(item = item)
+                }
             }
-        }
-        pagedLocations.apply {
-            when {
-                loadState.refresh is LoadState.Loading -> {
-                    item { LoadingItem() }
-                }
+            pagedLocations.apply {
+                when {
+                    loadState.refresh is LoadState.Loading -> {
+                        item { LoadingItem() }
+                    }
 
-                loadState.append is LoadState.Loading -> {
-                    item { LoadingItem() }
-                }
+                    loadState.append is LoadState.Loading -> {
+                        item { LoadingItem() }
+                    }
 
-                loadState.refresh is LoadState.Error -> {
-                    item {
-                        ErrorItem {
-                            pagedLocations.refresh()
+                    loadState.refresh is LoadState.Error -> {
+                        item {
+                            ErrorItem {
+                                pagedLocations.refresh()
+                            }
                         }
                     }
-                }
 
-                loadState.append is LoadState.Error -> {
-                    item {
-                        ErrorItem {
-                            pagedLocations.refresh()
+                    loadState.append is LoadState.Error -> {
+                        item {
+                            ErrorItem {
+                                pagedLocations.refresh()
+                            }
                         }
                     }
                 }

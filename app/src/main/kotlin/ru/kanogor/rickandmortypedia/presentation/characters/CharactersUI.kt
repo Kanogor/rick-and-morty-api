@@ -34,49 +34,51 @@ const val ALIVE = "Alive" // TODO заменить на энум
 
 @Composable
 fun CharactersUi(
-    component: CharactersComponent
+    component: CharactersComponent?
 ) {
-    val pagedCharacters = component.characters.collectAsLazyPagingItems()
-    pagedCharacters.refresh()
-    LazyColumn {
-        items(
-            count = pagedCharacters.itemCount,
-            key = pagedCharacters.itemKey { it.id },
-            contentType = pagedCharacters.itemContentType { "char" }
-        ) { index ->
-            val item = pagedCharacters[index]
-            if (item != null) {
-                CharacterListItem(
-                    character = item,
-                    onClick = {
-                        component.onCharClick(item.id)
-                    }
-                )
+    if (component != null) {
+        val pagedCharacters = component.characters.collectAsLazyPagingItems()
+        pagedCharacters.refresh()
+        LazyColumn {
+            items(
+                count = pagedCharacters.itemCount,
+                key = pagedCharacters.itemKey { it.id },
+                contentType = pagedCharacters.itemContentType { "char" }
+            ) { index ->
+                val item = pagedCharacters[index]
+                if (item != null) {
+                    CharacterListItem(
+                        character = item,
+                        onClick = {
+                            component.onCharClick(item.id)
+                        }
+                    )
+                }
             }
-        }
 
-        pagedCharacters.apply {
-            when {
-                loadState.refresh is LoadState.Loading -> {
-                    item { LoadingItem() }
-                }
+            pagedCharacters.apply {
+                when {
+                    loadState.refresh is LoadState.Loading -> {
+                        item { LoadingItem() }
+                    }
 
-                loadState.append is LoadState.Loading -> {
-                    item { LoadingItem() }
-                }
+                    loadState.append is LoadState.Loading -> {
+                        item { LoadingItem() }
+                    }
 
-                loadState.refresh is LoadState.Error -> {
-                    item {
-                        ErrorItem {
-                            pagedCharacters.refresh()
+                    loadState.refresh is LoadState.Error -> {
+                        item {
+                            ErrorItem {
+                                pagedCharacters.refresh()
+                            }
                         }
                     }
-                }
 
-                loadState.append is LoadState.Error -> {
-                    item {
-                        ErrorItem {
-                            pagedCharacters.refresh()
+                    loadState.append is LoadState.Error -> {
+                        item {
+                            ErrorItem {
+                                pagedCharacters.refresh()
+                            }
                         }
                     }
                 }
