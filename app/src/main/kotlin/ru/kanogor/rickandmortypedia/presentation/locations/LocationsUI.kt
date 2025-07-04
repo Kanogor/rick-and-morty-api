@@ -21,7 +21,6 @@ import androidx.paging.compose.itemKey
 import ru.kanogor.rickandmortypedia.domain.entity.LocationData
 import ru.kanogor.rickandmortypedia.presentation.components.ErrorItem
 import ru.kanogor.rickandmortypedia.presentation.components.LoadingItem
-import ru.kanogor.rickandmortypedia.presentation.theme.GreyBackground
 import ru.kanogor.rickandmortypedia.presentation.theme.GreyCard
 import ru.kanogor.rickandmortypedia.presentation.theme.GreyText
 
