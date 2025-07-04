@@ -145,6 +145,7 @@ android-library = { id = "com.android.library", version.ref = "agp" }
 # Common Plugins
 kanogor-app = { id = "kanogor.app", version = "unspecified" }
 kanogor-compose = { id = "kanogor.compose", version = "unspecified" }
+kanogor-decompose = { id = "kanogor.decompose", version = "unspecified" }
 kanogor-lib = { id = "kanogor.libs", version = "unspecified" }
 kanogor-navigation = { id = "kanogor.navigation", version = "unspecified" }
 

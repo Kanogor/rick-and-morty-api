@@ -8,7 +8,7 @@ import com.arkivanov.decompose.router.stack.childStack
 import com.arkivanov.decompose.router.stack.pop
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.serialization.Serializable
-import ru.kanogor.rickandmortypedia.presentation.components.toStateFlow
+import ru.kanogor.rickandmortypedia.common.toStateFlow
 import ru.kanogor.rickandmortypedia.presentation.main.MainComponent
 import ru.kanogor.rickandmortypedia.presentation.main.MainComponentImpl
 import ru.kanogor.rickandmortypedia.presentation.navigation.NavigationComponent.NavChild

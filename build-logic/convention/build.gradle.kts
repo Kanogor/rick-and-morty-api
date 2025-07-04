@@ -30,5 +30,9 @@ gradlePlugin {
             id = "kanogor.koin"
             implementationClass = "ru.kanogor.rickandmortypedia.convention.plugins.KoinPlugin"
         }
+        register("decomposePlugin") {
+            id = "kanogor.decompose"
+            implementationClass = "ru.kanogor.rickandmortypedia.convention.plugins.DecomposePlugin"
+        }
     }
 }

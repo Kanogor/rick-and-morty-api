@@ -9,7 +9,7 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.serialization.Serializable
 import ru.kanogor.rickandmortypedia.presentation.characters.CharactersComponent
 import ru.kanogor.rickandmortypedia.presentation.characters.CharactersComponentImpl
-import ru.kanogor.rickandmortypedia.presentation.components.toStateFlow
+import ru.kanogor.rickandmortypedia.common.toStateFlow
 import ru.kanogor.rickandmortypedia.presentation.locations.LocationsComponent
 import ru.kanogor.rickandmortypedia.presentation.locations.LocationsComponentImpl
 import kotlin.enums.EnumEntries

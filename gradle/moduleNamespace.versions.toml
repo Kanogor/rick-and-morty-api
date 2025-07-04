@@ -2,3 +2,6 @@
 # App
 app = "ru.kanogor.rickandmortypedia"
 
+# Common
+common = "ru.kanogor.rickandmortypedia.common"
+
