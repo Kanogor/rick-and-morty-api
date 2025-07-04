@@ -27,7 +27,7 @@ import ru.kanogor.rickandmortypedia.R
 import ru.kanogor.rickandmortypedia.domain.entity.CharacterData
 import ru.kanogor.rickandmortypedia.presentation.components.ErrorItem
 import ru.kanogor.rickandmortypedia.presentation.components.LoadingItem
-import ru.kanogor.rickandmortypedia.presentation.theme.GreyBackground
+import ru.kanogor.rickandmortypedia.presentation.theme.GreyCard
 import ru.kanogor.rickandmortypedia.presentation.theme.GreyText
 
 const val ALIVE = "Alive" // TODO заменить на энум
@@ -101,7 +101,7 @@ fun CharacterListItem(
                 onClick.invoke()
             },
         colors = CardDefaults.cardColors(
-            containerColor = GreyBackground
+            containerColor = GreyCard
         )
     ) {
         Row(

@@ -1,7 +1,8 @@
 package ru.kanogor.rickandmortypedia.presentation.main
 
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.systemBarsPadding
 import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.material3.PrimaryTabRow
@@ -17,11 +18,10 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.unit.dp
 import ru.kanogor.rickandmortypedia.R
 import ru.kanogor.rickandmortypedia.presentation.characters.CharactersUi
 import ru.kanogor.rickandmortypedia.presentation.locations.LocationsUi
-import ru.kanogor.rickandmortypedia.presentation.theme.GreyBackground
+import ru.kanogor.rickandmortypedia.presentation.theme.GreyCard
 
 @Composable
 fun MainScreen(
@@ -70,8 +70,7 @@ fun MainScreen(
     }
 
     Column(
-        modifier = Modifier
-            .padding(top = 6.dp)
+        modifier = Modifier.fillMaxSize().systemBarsPadding()
     ) {
         PrimaryTabRow(
             selectedTabIndex = when (activeComponent) {
@@ -83,7 +82,7 @@ fun MainScreen(
                     component.mainTabs.indexOf(MainTabs.LOCATIONS)
                 }
             },
-            containerColor = GreyBackground,
+            containerColor = GreyCard,
             contentColor = Color.White
         ) {
             Tab(

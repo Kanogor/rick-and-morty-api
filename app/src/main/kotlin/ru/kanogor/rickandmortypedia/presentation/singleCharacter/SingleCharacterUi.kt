@@ -46,6 +46,7 @@ import ru.kanogor.rickandmortypedia.data.dto.EpisodeDto
 import ru.kanogor.rickandmortypedia.presentation.characters.ALIVE
 import ru.kanogor.rickandmortypedia.presentation.components.LoadingItem
 import ru.kanogor.rickandmortypedia.presentation.theme.GreyBackground
+import ru.kanogor.rickandmortypedia.presentation.theme.GreyCard
 import ru.kanogor.rickandmortypedia.presentation.theme.GreyText
 
 
@@ -73,7 +74,7 @@ fun SingleCharacterUi(component: SingleCharacterComponent) {
                         color = Color.White
                     )
                 },
-                colors = TopAppBarDefaults.topAppBarColors(containerColor = GreyBackground),
+                colors = TopAppBarDefaults.topAppBarColors(containerColor = GreyCard),
                 modifier = Modifier
                     .shadow(
                         elevation = AppBarDefaults.TopAppBarElevation,
@@ -98,7 +99,7 @@ fun SingleCharacterUi(component: SingleCharacterComponent) {
             LazyColumn(
                 modifier = Modifier
                     .fillMaxSize()
-                    .background(color = GreyBackground)
+                    .background(color = GreyCard)
                     .padding(top = 60.dp)
             ) {
                 item {

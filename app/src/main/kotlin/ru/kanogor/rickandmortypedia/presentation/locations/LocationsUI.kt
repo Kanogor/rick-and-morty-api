@@ -22,6 +22,7 @@ import ru.kanogor.rickandmortypedia.domain.entity.LocationData
 import ru.kanogor.rickandmortypedia.presentation.components.ErrorItem
 import ru.kanogor.rickandmortypedia.presentation.components.LoadingItem
 import ru.kanogor.rickandmortypedia.presentation.theme.GreyBackground
+import ru.kanogor.rickandmortypedia.presentation.theme.GreyCard
 import ru.kanogor.rickandmortypedia.presentation.theme.GreyText
 
 @Composable
@@ -79,7 +80,7 @@ fun LocationListItem(item: LocationData) {
             .fillMaxWidth()
             .padding(start = 8.dp, end = 8.dp, top = 4.dp),
         colors = CardDefaults.cardColors(
-            containerColor = GreyBackground
+            containerColor = GreyCard
         )
     ) {
         Column(

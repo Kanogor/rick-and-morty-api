@@ -8,6 +8,8 @@ import ru.kanogor.rickandmortypedia.convention.config.Config
 import ru.kanogor.rickandmortypedia.convention.config.configureCommon
 import ru.kanogor.rickandmortypedia.convention.config.configureCompose
 import ru.kanogor.rickandmortypedia.convention.utils.PluginAlias
+import java.io.FileInputStream
+import java.util.Properties
 
 class AppModulePlugin : Plugin<Project> {
     override fun apply(target: Project) {
@@ -17,11 +19,26 @@ class AppModulePlugin : Plugin<Project> {
                 configureCommon(this)
                 configureCompose(this)
                 applyFlavors()
+                applySigningConfigs(this@with)
+                applyBuildTypes()
+                applyOutputFileName()
+
                 packaging {
                     resources {
                         excludes += "/META-INF/{AL2.0,LGPL2.1}"
                     }
                 }
+            }
+        }
+    }
+
+    private fun BaseAppModuleExtension.applyOutputFileName() = applicationVariants.all {
+        outputs.all {
+            if (this is com.android.build.gradle.internal.api.BaseVariantOutputImpl) {
+                val appName = Config.APP_NAME
+                val appVersion = versionName
+                val buildType = buildType.name
+                outputFileName = "$appName-$appVersion-$buildType.apk"
             }
         }
     }
@@ -38,14 +55,46 @@ class AppModulePlugin : Plugin<Project> {
             val appLabelKey = "appLabel"
 
             defaultConfig {
-                buildFeatures.buildConfig = true
                 targetSdk = Config.TARGET_SDK
                 versionCode = Config.CODE_VERSION
-                versionName = Config.VERSION_NAME
+                versionName = Config.versionName()
                 manifestPlaceholders.apply {
-                    put(appLabelKey, "RickAndMortyPedia")
+                    put(appLabelKey, Config.APP_NAME)
                 }
             }
         }
     }
+
+    private fun BaseAppModuleExtension.applySigningConfigs(project: Project) = this.signingConfigs {
+        val keystoreFileName = "${project.projectDir.absolutePath}/config/keystore.properties"
+        val keystoreProperties = Properties().apply {
+            load(FileInputStream(project.file(keystoreFileName)))
+        }
+
+        create("release") {
+            with(keystoreProperties) {
+                storeFile = project.file(getProperty("storeFile"))
+                storePassword = getProperty("storePassword")
+                keyAlias = getProperty("keyAlias")
+                keyPassword = getProperty("keyPassword")
+            }
+        }
+    }
+
+    private fun BaseAppModuleExtension.applyBuildTypes() = this.buildTypes {
+
+        debug {
+            isMinifyEnabled = false
+            isDebuggable = true
+        }
+        release {
+            isMinifyEnabled = true
+            isShrinkResources = true
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro"
+            )
+            signingConfig = signingConfigs.getByName("release")
+        }
+    }
+
 }
