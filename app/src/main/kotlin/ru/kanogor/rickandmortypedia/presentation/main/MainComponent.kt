@@ -1,16 +1,12 @@
 package ru.kanogor.rickandmortypedia.presentation.main
 
-import androidx.paging.PagingData
 import com.arkivanov.decompose.ComponentContext
 import com.arkivanov.decompose.router.stack.ChildStack
 import com.arkivanov.decompose.router.stack.StackNavigation
 import com.arkivanov.decompose.router.stack.bringToFront
 import com.arkivanov.decompose.router.stack.childStack
-import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.serialization.Serializable
-import ru.kanogor.rickandmortypedia.domain.entity.CharacterData
-import ru.kanogor.rickandmortypedia.domain.entity.LocationData
 import ru.kanogor.rickandmortypedia.presentation.characters.CharactersComponent
 import ru.kanogor.rickandmortypedia.presentation.characters.CharactersComponentImpl
 import ru.kanogor.rickandmortypedia.presentation.components.toStateFlow
@@ -35,8 +31,6 @@ interface MainComponent {
 
 class MainComponentImpl(
     componentContext: ComponentContext,
-    private val locationsData: Flow<PagingData<LocationData>>,
-    private val charactersData: Flow<PagingData<CharacterData>>,
     private val navigateToSingleCharacter: (Int) -> Unit
 ) : ComponentContext by componentContext, MainComponent {
 
@@ -63,7 +57,6 @@ class MainComponentImpl(
         ChildConfig.Characters -> MainComponent.MainChild.Characters(
             component = CharactersComponentImpl(
                 componentContext = componentContext,
-                charactersData = charactersData,
                 navigateToSingleCharacter = navigateToSingleCharacter
             )
         )
@@ -71,7 +64,6 @@ class MainComponentImpl(
         ChildConfig.Locations -> MainComponent.MainChild.Locations(
             component = LocationsComponentImpl(
                 componentContext = componentContext,
-                locationsData = locationsData,
             )
         )
     }

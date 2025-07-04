@@ -1,17 +1,28 @@
 package ru.kanogor.rickandmortypedia.di
 
-import org.koin.androidx.viewmodel.dsl.viewModel
+import org.koin.core.module.dsl.viewModel
 import org.koin.dsl.module
-import ru.kanogor.rickandmortypedia.presentation.main.MainViewModel
+import ru.kanogor.rickandmortypedia.presentation.characters.CharactersViewModel
+import ru.kanogor.rickandmortypedia.presentation.locations.LocationsViewModel
+import ru.kanogor.rickandmortypedia.presentation.singleCharacter.SingleCharacterViewModel
 
 val appModule = module {
 
     viewModel {
-        MainViewModel(
+        CharactersViewModel(
             getRickAndMortyCharactersUseCase = get(),
-            getRickAndMortyLocationsUseCase = get(),
-            getSingleCharacterUseCase = get()
         )
     }
 
+    viewModel {
+        LocationsViewModel(
+            getRickAndMortyLocationsUseCase = get(),
+        )
+    }
+
+    viewModel {
+        SingleCharacterViewModel(
+            getSingleCharacterUseCase = get()
+        )
+    }
 }

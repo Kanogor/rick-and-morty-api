@@ -1,17 +1,13 @@
 package ru.kanogor.rickandmortypedia.presentation.navigation
 
-import androidx.paging.PagingData
 import com.arkivanov.decompose.ComponentContext
 import com.arkivanov.decompose.router.stack.ChildStack
 import com.arkivanov.decompose.router.stack.StackNavigation
 import com.arkivanov.decompose.router.stack.bringToFront
 import com.arkivanov.decompose.router.stack.childStack
 import com.arkivanov.decompose.router.stack.pop
-import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.serialization.Serializable
-import ru.kanogor.rickandmortypedia.domain.entity.CharacterData
-import ru.kanogor.rickandmortypedia.domain.entity.LocationData
 import ru.kanogor.rickandmortypedia.presentation.components.toStateFlow
 import ru.kanogor.rickandmortypedia.presentation.main.MainComponent
 import ru.kanogor.rickandmortypedia.presentation.main.MainComponentImpl
@@ -32,9 +28,6 @@ interface NavigationComponent {
 
 class NavigationComponentImpl(
     componentContext: ComponentContext,
-    private val locationsData: Flow<PagingData<LocationData>>,
-    private val charactersData: Flow<PagingData<CharacterData>>,
-    private val getSingleCharacterData: suspend  (Int) -> CharacterData?,
 ) : ComponentContext by componentContext, NavigationComponent {
 
     private val navigation = StackNavigation<NavChildConfig>()
@@ -54,8 +47,6 @@ class NavigationComponentImpl(
         is NavChildConfig.Main -> NavChild.Main(
             component = MainComponentImpl(
                 componentContext = componentContext,
-                locationsData = locationsData,
-                charactersData = charactersData,
                 navigateToSingleCharacter = {
                     navigation.bringToFront(NavChildConfig.SingleCharacter(it))
                 }
@@ -65,7 +56,6 @@ class NavigationComponentImpl(
         is NavChildConfig.SingleCharacter -> NavChild.SingleCharacter(
             component = SingleCharacterComponentImpl(
                 componentContext = componentContext,
-                getSingleCharacterData = getSingleCharacterData,
                 characterId = config.characterId,
                 onBackClick = {
                     navigation.pop()

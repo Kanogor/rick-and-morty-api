@@ -41,6 +41,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.zIndex
 import coil.compose.AsyncImage
+import org.koin.androidx.compose.koinViewModel
 import ru.kanogor.rickandmortypedia.R
 import ru.kanogor.rickandmortypedia.data.dto.EpisodeDto
 import ru.kanogor.rickandmortypedia.presentation.characters.ALIVE
@@ -53,14 +54,17 @@ import ru.kanogor.rickandmortypedia.presentation.theme.GreyText
 @OptIn(ExperimentalMaterial3Api::class)
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
-fun SingleCharacterUi(component: SingleCharacterComponent) {
+fun SingleCharacterUi(
+    component: SingleCharacterComponent,
+    singleCharacterViewModel: SingleCharacterViewModel = koinViewModel()
+) {
 
     LaunchedEffect(Unit) {
-        component.getSingleCharacter(component.characterId)
+        singleCharacterViewModel.getSingleCharacter(component.characterId)
     }
 
-    val character by component.singleCharacter.collectAsState()
-    val isLoading by component.isLoading.collectAsState()
+    val character by singleCharacterViewModel.singleCharacter.collectAsState()
+    val isLoading by singleCharacterViewModel.isLoading.collectAsState()
     val context = LocalContext.current
     val episodeList = remember {
         mutableStateOf<MutableList<EpisodeDto>>(mutableListOf())

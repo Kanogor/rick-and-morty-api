@@ -9,18 +9,13 @@ interface CharactersComponent {
 
     fun onCharClick(id: Int)
 
-    val characters: Flow<PagingData<CharacterData>>
-
 }
 
 class CharactersComponentImpl(
-    private val charactersData: Flow<PagingData<CharacterData>>,
     private val navigateToSingleCharacter: (id: Int) -> Unit,
     componentContext: ComponentContext
 ) : ComponentContext by componentContext, CharactersComponent {
     override fun onCharClick(id: Int) {
         navigateToSingleCharacter(id)
     }
-
-    override val characters: Flow<PagingData<CharacterData>> = charactersData
 }

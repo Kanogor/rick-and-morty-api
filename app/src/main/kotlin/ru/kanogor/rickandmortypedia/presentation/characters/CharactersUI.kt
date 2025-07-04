@@ -23,6 +23,7 @@ import androidx.paging.compose.collectAsLazyPagingItems
 import androidx.paging.compose.itemContentType
 import androidx.paging.compose.itemKey
 import coil.compose.AsyncImage
+import org.koin.compose.viewmodel.koinViewModel
 import ru.kanogor.rickandmortypedia.R
 import ru.kanogor.rickandmortypedia.domain.entity.CharacterData
 import ru.kanogor.rickandmortypedia.presentation.components.ErrorItem
@@ -34,10 +35,11 @@ const val ALIVE = "Alive" // TODO заменить на энум
 
 @Composable
 fun CharactersUi(
-    component: CharactersComponent?
+    component: CharactersComponent?,
+    viewModel: CharactersViewModel = koinViewModel()
 ) {
     if (component != null) {
-        val pagedCharacters = component.characters.collectAsLazyPagingItems()
+        val pagedCharacters = viewModel.pagedCharacters().collectAsLazyPagingItems()
         pagedCharacters.refresh()
         LazyColumn {
             items(

@@ -18,6 +18,7 @@ import androidx.compose.ui.unit.sp
 import androidx.paging.LoadState
 import androidx.paging.compose.collectAsLazyPagingItems
 import androidx.paging.compose.itemKey
+import org.koin.compose.viewmodel.koinViewModel
 import ru.kanogor.rickandmortypedia.domain.entity.LocationData
 import ru.kanogor.rickandmortypedia.presentation.components.ErrorItem
 import ru.kanogor.rickandmortypedia.presentation.components.LoadingItem
@@ -26,10 +27,11 @@ import ru.kanogor.rickandmortypedia.presentation.theme.GreyText
 
 @Composable
 fun LocationsUi(
-    locationsComponent: LocationsComponent?
+    locationsComponent: LocationsComponent?,
+    locationsViewModel: LocationsViewModel = koinViewModel()
 ) {
     if (locationsComponent != null) {
-        val pagedLocations = locationsComponent.locations.collectAsLazyPagingItems()
+        val pagedLocations = locationsViewModel.pagedLocations().collectAsLazyPagingItems()
         pagedLocations.refresh()
         LazyColumn {
             items(
