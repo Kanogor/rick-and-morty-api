@@ -5,6 +5,7 @@ import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import kotlinx.coroutines.flow.Flow
+import ru.kanogor.rickandmortypedia.data.dto.characters.mapToDomain
 import ru.kanogor.rickandmortypedia.data.pagingsource.CharactersPagingSource
 import ru.kanogor.rickandmortypedia.data.pagingsource.LocationsPagingSource
 import ru.kanogor.rickandmortypedia.domain.entity.CharacterData
@@ -30,7 +31,7 @@ class RickAndMortyRepository(private val searchRickAndMorty: SearchRickAndMorty)
         return try {
             val response = searchRickAndMorty.getSingleCharacter(id)
             if (response.isSuccessful) {
-                response.body()
+                response.body()?.mapToDomain()
             } else {
                 null
             }

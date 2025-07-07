@@ -3,6 +3,7 @@ package ru.kanogor.rickandmortypedia.data.pagingsource
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import ru.kanogor.rickandmortypedia.data.SearchRickAndMorty
+import ru.kanogor.rickandmortypedia.data.dto.characters.mapToListDomain
 import ru.kanogor.rickandmortypedia.domain.entity.CharacterData
 
 class CharactersPagingSource(
@@ -16,7 +17,7 @@ class CharactersPagingSource(
             api.getCharacters(page)
         }.fold(
             onSuccess = {
-                val characterList = it.body()?.results ?: emptyList()
+                val characterList = it.body()?.results?.mapToListDomain() ?: emptyList()
                 LoadResult.Page(
                     data = characterList,
                     prevKey = null,

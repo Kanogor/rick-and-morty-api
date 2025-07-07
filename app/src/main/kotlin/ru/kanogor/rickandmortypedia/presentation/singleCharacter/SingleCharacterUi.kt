@@ -43,8 +43,10 @@ import androidx.compose.ui.zIndex
 import coil.compose.AsyncImage
 import org.koin.androidx.compose.koinViewModel
 import ru.kanogor.rickandmortypedia.R
-import ru.kanogor.rickandmortypedia.data.dto.EpisodeDto
-import ru.kanogor.rickandmortypedia.presentation.characters.ALIVE
+import ru.kanogor.rickandmortypedia.data.dto.episodes.EpisodeDto
+import ru.kanogor.rickandmortypedia.domain.entity.Gender.Companion.toText
+import ru.kanogor.rickandmortypedia.domain.entity.Status
+import ru.kanogor.rickandmortypedia.domain.entity.Status.Companion.toText
 import ru.kanogor.rickandmortypedia.presentation.components.LoadingItem
 import ru.kanogor.rickandmortypedia.presentation.theme.GreyBackground
 import ru.kanogor.rickandmortypedia.presentation.theme.GreyCard
@@ -141,7 +143,6 @@ fun SingleCharacterUi(
                         modifier = Modifier.padding(top = 6.dp, start = 26.dp),
                         color = GreyText
                     )
-                    val isAlive = character?.status == ALIVE
                     Row {
                         Canvas(
                             modifier = Modifier
@@ -149,13 +150,13 @@ fun SingleCharacterUi(
                                 .size(size = 6.dp),
                             onDraw = {
                                 drawCircle(
-                                    color = if (isAlive) Color.Green
+                                    color = if (character?.status == Status.ALIVE) Color.Green
                                     else Color.Red
                                 )
                             },
                         )
                         Text(
-                            text = character?.status ?: ALIVE,
+                            text = character?.status?.toText() ?: Status.UNKNOWN.toText(),
                             modifier = Modifier.padding(4.dp),
                             color = Color.White
                         )
@@ -165,8 +166,9 @@ fun SingleCharacterUi(
                         modifier = Modifier.padding(top = 12.dp, start = 26.dp),
                         color = GreyText
                     )
+                    val speciesAndGender = listOf(character?.species, character?.gender?.toText())
                     Text(
-                        text = character?.species.orEmpty(),
+                        text = speciesAndGender.filterNotNull().joinToString(", "),
                         modifier = Modifier.padding(top = 4.dp, start = 26.dp),
                         color = Color.White
                     )

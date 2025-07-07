@@ -26,12 +26,12 @@ import coil.compose.AsyncImage
 import org.koin.compose.viewmodel.koinViewModel
 import ru.kanogor.rickandmortypedia.R
 import ru.kanogor.rickandmortypedia.domain.entity.CharacterData
+import ru.kanogor.rickandmortypedia.domain.entity.Status
+import ru.kanogor.rickandmortypedia.domain.entity.Status.Companion.toText
 import ru.kanogor.rickandmortypedia.presentation.components.ErrorItem
 import ru.kanogor.rickandmortypedia.presentation.components.LoadingItem
 import ru.kanogor.rickandmortypedia.presentation.theme.GreyCard
 import ru.kanogor.rickandmortypedia.presentation.theme.GreyText
-
-const val ALIVE = "Alive" // TODO заменить на энум
 
 @Composable
 fun CharactersUi(
@@ -94,7 +94,6 @@ fun CharacterListItem(
     character: CharacterData,
     onClick: () -> Unit,
 ) {
-    val isAlive = character.status == ALIVE
     Card(
         modifier = Modifier
             .fillMaxWidth()
@@ -134,13 +133,13 @@ fun CharacterListItem(
                             .size(size = 6.dp),
                         onDraw = {
                             drawCircle(
-                                color = if (isAlive) Color.Green
+                                color = if (character.status == Status.ALIVE) Color.Green
                                 else Color.Red
                             )
                         },
                     )
                     Text(
-                        text = character.status,
+                        text = character.status.toText(),
                         modifier = Modifier.padding(8.dp),
                         color = Color.White
                     )
