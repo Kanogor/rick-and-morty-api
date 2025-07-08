@@ -144,7 +144,7 @@ fun CharactersUi(
 }
 
 @Composable
-internal fun CharactersContent(
+private fun CharactersContent(
     component: CharactersComponent,
     data: LazyPagingItems<CharacterData>,
     isVisibleCharacters: Boolean,

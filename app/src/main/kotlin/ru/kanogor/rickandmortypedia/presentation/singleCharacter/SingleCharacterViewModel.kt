@@ -1,9 +1,9 @@
 package ru.kanogor.rickandmortypedia.presentation.singleCharacter
 
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import ru.kanogor.rickandmortypedia.common.Entity
 import ru.kanogor.rickandmortypedia.domain.GetEpisodesUseCase
@@ -28,12 +28,23 @@ class SingleCharacterViewModel(
     private val _isEpisodesLoading = MutableStateFlow(false)
     val isEpisodesLoading: StateFlow<Boolean> = _isEpisodesLoading
 
+    private val _errorMessage = MutableStateFlow<String?>(null)
+    val errorMessage = _errorMessage.asStateFlow()
+
+    private fun showErrorMessage(message: String) {
+        _errorMessage.update { message }
+    }
+
+    private fun hideErrorMessage() {
+        _errorMessage.update { null }
+    }
+
     suspend fun getSingleCharacter(id: Int) {
+        hideErrorMessage()
         _isCharacterLoading.value = true
         when (val character = getSingleCharacterUseCase.execute(id)) {
             is Entity.Error -> {
-                Log.d("ZZZZ", "getSingleCharacter Error = ${character.message}")
-                // TODO error alert
+                showErrorMessage(message = character.message)
                 _isCharacterLoading.value = false
             }
 
@@ -49,8 +60,7 @@ class SingleCharacterViewModel(
         _isEpisodesLoading.value = true
         when (val result = getEpisodesUseCase.execute(episodesUrlList)) {
             is Entity.Error -> {
-                Log.d("ZZZZ", "getEpisodes Error = ${result.message}")
-                // TODO error alert
+                showErrorMessage(message = result.message)
                 _isEpisodesLoading.value = false
             }
 

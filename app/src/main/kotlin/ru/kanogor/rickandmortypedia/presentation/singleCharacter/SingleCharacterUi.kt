@@ -25,6 +25,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
@@ -37,6 +38,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.zIndex
 import coil.compose.AsyncImage
+import kotlinx.coroutines.launch
 import org.koin.androidx.compose.koinViewModel
 import ru.kanogor.rickandmortypedia.R
 import ru.kanogor.rickandmortypedia.domain.entity.CharacterData
@@ -44,6 +46,7 @@ import ru.kanogor.rickandmortypedia.domain.entity.Gender.Companion.toText
 import ru.kanogor.rickandmortypedia.domain.entity.Status
 import ru.kanogor.rickandmortypedia.domain.entity.Status.Companion.toText
 import ru.kanogor.rickandmortypedia.domain.entity.previewCharacterData
+import ru.kanogor.rickandmortypedia.presentation.components.ErrorItem
 import ru.kanogor.rickandmortypedia.presentation.components.LoadingItem
 import ru.kanogor.rickandmortypedia.presentation.theme.GreyBackground
 import ru.kanogor.rickandmortypedia.presentation.theme.GreyCard
@@ -66,6 +69,7 @@ fun SingleCharacterUi(
     val isCharacterLoading by singleCharacterViewModel.isCharacterLoading.collectAsState()
     val episodeList by singleCharacterViewModel.episodes.collectAsState()
     val isEpisodesLoading by singleCharacterViewModel.isEpisodesLoading.collectAsState()
+    val errorMessage by singleCharacterViewModel.errorMessage.collectAsState()
     Scaffold(
         topBar = {
             TopAppBar(
@@ -98,19 +102,30 @@ fun SingleCharacterUi(
                     .background(color = GreyCard)
             )
         } else {
-            LazyColumn(
-                modifier = Modifier
-                    .fillMaxSize()
-                    .background(color = GreyCard)
-                    .padding(top = paddingValue.calculateTopPadding())
-            ) {
-                item {
-                    SingleCharacterData(character)
+            if (errorMessage == null) {
+                LazyColumn(
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .background(color = GreyCard)
+                        .padding(top = paddingValue.calculateTopPadding())
+                ) {
+                    item {
+                        SingleCharacterData(character)
+                    }
+                    episodeList(
+                        isEpisodesLoading = isEpisodesLoading,
+                        episodeList = episodeList
+                    )
                 }
-                episodeList(
-                    isEpisodesLoading = isEpisodesLoading,
-                    episodeList = episodeList
-                )
+            } else {
+                val scope = rememberCoroutineScope()
+                ErrorItem(
+                    errorMessage = errorMessage.orEmpty()
+                ) {
+                    scope.launch {
+                        singleCharacterViewModel.getSingleCharacter(component.characterId)
+                    }
+                }
             }
         }
     }

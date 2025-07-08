@@ -41,7 +41,10 @@ fun LoadingItem(
 
 
 @Composable
-fun ErrorItem(refresh: () -> Unit) {
+fun ErrorItem(
+    errorMessage: String = stringResource(R.string.oops),
+    refresh: () -> Unit
+) {
     Column(
         modifier = Modifier
             .fillMaxWidth()
@@ -49,7 +52,7 @@ fun ErrorItem(refresh: () -> Unit) {
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Text(
-            text = stringResource(R.string.oops),
+            text = errorMessage,
             modifier = Modifier.padding(top = 26.dp, bottom = 16.dp)
         )
         Button(onClick = { refresh.invoke() }) {
