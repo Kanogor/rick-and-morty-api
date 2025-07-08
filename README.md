@@ -1,10 +1,11 @@
 # RickAndMortypedia
 ## This is small app with some information about Rick and Morty
 ### In this app were used the following tools:
-- Koin as a DI
+- Koin
 - Jetpack Compose
 - Retrofit
 - Pagination
+- Decompose
 
 <img src="https://steamuserimages-a.akamaihd.net/ugc/440577537831767359/076AA934B10F4717B4A05F62BA33515D4ECE364F/?imw=512&amp;imh=397&amp;ima=fit&amp;impolicy=Letterbox&amp;imcolor=%23000000&amp;letterbox=true" width="500"/> 
 
@@ -13,7 +14,7 @@
 #### - Main screen(Persons list): #
 
 
-<img src="https://ic.wampi.ru/2023/10/05/Screenshot_1696518515.png" width="400"/> 
+<img src="http://post-images.org/photo-page.php?photo=tF1w4Xp8" width="400"/> 
 
 ***
 
@@ -21,20 +22,20 @@
 
 
 <div id="header" align="start">
-<img src="https://im.wampi.ru/2023/10/05/Screenshot_1696518611.png" width="400"/> 
-  <img src="https://ic.wampi.ru/2023/10/05/Screenshot_1696518615.png" width="400"/> 
+<img src="http://post-images.org/photo-page.php?photo=mVeoZrqF" width="400"/> 
+  <img src="http://post-images.org/photo-page.php?photo=FAtq3DGe" width="400"/> 
   </div> 
 
 ***
 
-#### - Second screen(location list): #
+#### - Second screen(locations list): #
 
 
-<img src="https://ie.wampi.ru/2023/10/05/Screenshot_1696518526.png" width="400"/> 
+<img src="http://post-images.org/photo-page.php?photo=3WQo5Uhp" width="400"/> 
 
 ***
 
-**In future I plan to do person's search and  splashscreen** 
+**In version 2.0.7 was added Decompose navigation and components** 
 
 
 *Thanks for watching*
