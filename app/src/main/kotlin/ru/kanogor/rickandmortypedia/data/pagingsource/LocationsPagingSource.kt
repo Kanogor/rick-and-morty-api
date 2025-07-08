@@ -13,7 +13,7 @@ class LocationsPagingSource(
     override fun getRefreshKey(state: PagingState<Int, LocationData>): Int = FIRST_PAGE
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, LocationData> {
         val page = params.key ?: FIRST_PAGE
-        return kotlin.runCatching {
+        return runCatching {
             api.getLocation(page)
         }.fold(
             onSuccess = { result ->

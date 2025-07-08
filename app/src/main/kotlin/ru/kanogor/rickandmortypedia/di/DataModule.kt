@@ -3,10 +3,9 @@ package ru.kanogor.rickandmortypedia.di
 import org.koin.dsl.module
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
+import ru.kanogor.rickandmortypedia.BuildConfig
 import ru.kanogor.rickandmortypedia.data.RickAndMortyRepository
 import ru.kanogor.rickandmortypedia.data.SearchRickAndMorty
-
-private const val BASE_URL = "https://rickandmortyapi.com/api/"
 
 val dataModule = module {
 
@@ -16,7 +15,7 @@ val dataModule = module {
 
     single {
         Retrofit.Builder()
-            .baseUrl(BASE_URL)
+            .baseUrl(BuildConfig.BASE_URL)
             .addConverterFactory(MoshiConverterFactory.create())
             .build()
     }

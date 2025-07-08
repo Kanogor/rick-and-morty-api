@@ -3,7 +3,7 @@ plugins {
     alias(libs.plugins.kanogor.decompose)
 }
 
-android.namespace = moduleNamespace.versions.common.get()
+android.namespace = moduleNamespace.versions.common.utils.get()
 
 dependencies {
 

@@ -11,7 +11,8 @@ android.namespace = moduleNamespace.versions.app.get()
 dependencies {
 
     // Modules
-    implementation(projects.common)
+    implementation(projects.common.utils)
+    implementation(projects.common.network)
 
     // Libs
     implementation(libs.androidx.core.ktx)

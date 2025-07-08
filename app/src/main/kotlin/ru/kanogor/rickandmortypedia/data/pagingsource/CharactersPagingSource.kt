@@ -13,7 +13,7 @@ class CharactersPagingSource(
     override fun getRefreshKey(state: PagingState<Int, CharacterData>): Int = FIRST_PAGE
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, CharacterData> {
         val page = params.key ?: FIRST_PAGE
-        return kotlin.runCatching {
+        return runCatching {
             api.getCharacters(page)
         }.fold(
             onSuccess = {

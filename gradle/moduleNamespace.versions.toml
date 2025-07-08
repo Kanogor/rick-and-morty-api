@@ -3,5 +3,6 @@
 app = "ru.kanogor.rickandmortypedia"
 
 # Common
-common = "ru.kanogor.rickandmortypedia.common"
+common-utils = "ru.kanogor.rickandmortypedia.common.utils"
+common-network = "ru.kanogor.rickandmortypedia.common.network"
 

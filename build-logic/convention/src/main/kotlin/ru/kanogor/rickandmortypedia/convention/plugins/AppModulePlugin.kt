@@ -55,12 +55,18 @@ class AppModulePlugin : Plugin<Project> {
             val appLabelKey = "appLabel"
 
             defaultConfig {
+                buildFeatures.buildConfig = true
                 targetSdk = Config.TARGET_SDK
                 versionCode = Config.CODE_VERSION
                 versionName = Config.versionName()
                 manifestPlaceholders.apply {
                     put(appLabelKey, Config.APP_NAME)
                 }
+                buildConfigField(
+                    FlavorsField.BACKEND_URL.first,
+                    FlavorsField.BACKEND_URL.second,
+                    Config.BASE_URL
+                )
             }
         }
     }
@@ -94,6 +100,13 @@ class AppModulePlugin : Plugin<Project> {
                 getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro"
             )
             signingConfig = signingConfigs.getByName("release")
+        }
+    }
+
+    companion object {
+        private object FlavorsField {
+            // first is Type second is Name
+            val BACKEND_URL = "String" to "BASE_URL"
         }
     }
 
