@@ -5,6 +5,8 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.lazy.LazyListScope
+import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Text
@@ -15,8 +17,21 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import ru.kanogor.rickandmortypedia.domain.entity.Episode
-import ru.kanogor.rickandmortypedia.presentation.theme.GreyCard
+import ru.kanogor.rickandmortypedia.presentation.components.LoadingItem
+import ru.kanogor.rickandmortypedia.presentation.theme.GreyBackground
 import ru.kanogor.rickandmortypedia.presentation.theme.GreyText
+
+fun LazyListScope.episodeList(isEpisodesLoading: Boolean, episodeList: List<Episode>) {
+    if (isEpisodesLoading) {
+        item {
+            LoadingItem()
+        }
+    } else {
+        items(items = episodeList) { item ->
+            if (episodeList.isNotEmpty()) EpisodeCard(item = item)
+        }
+    }
+}
 
 @Composable
 fun EpisodeCard(item: Episode) {
@@ -25,7 +40,7 @@ fun EpisodeCard(item: Episode) {
             .fillMaxWidth()
             .padding(8.dp),
         colors = CardDefaults.cardColors(
-            containerColor = GreyCard
+            containerColor = GreyBackground
         )
     ) {
         Column(

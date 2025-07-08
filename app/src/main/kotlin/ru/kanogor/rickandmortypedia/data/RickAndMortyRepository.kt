@@ -1,6 +1,5 @@
 package ru.kanogor.rickandmortypedia.data
 
-import android.util.Log
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
