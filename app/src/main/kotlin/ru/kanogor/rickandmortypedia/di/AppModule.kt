@@ -22,7 +22,8 @@ val appModule = module {
 
     viewModel {
         SingleCharacterViewModel(
-            getSingleCharacterUseCase = get()
+            getSingleCharacterUseCase = get(),
+            getEpisodesUseCase = get()
         )
     }
 }

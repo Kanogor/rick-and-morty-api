@@ -1,5 +1,6 @@
 package ru.kanogor.rickandmortypedia.common
 
+import android.util.Log
 import kotlinx.serialization.json.Json
 import retrofit2.HttpException
 import retrofit2.Response
@@ -52,7 +53,7 @@ open class BaseRepository {
 
                 else -> {
                     ResponseStatus.Error(
-                        NoNetworkException(null, Throwable(e))
+                        NoNetworkException(e.message, Throwable(e))
                     )
                 }
             }

@@ -17,4 +17,4 @@ class NoNetworkException(
     override val cause: Throwable
 ) : Exception(message, cause)
 
-class ApiErrorException(val code: String?, override val message: String) : IOException(message)
+class ApiErrorException(override val message: String) : IOException(message)

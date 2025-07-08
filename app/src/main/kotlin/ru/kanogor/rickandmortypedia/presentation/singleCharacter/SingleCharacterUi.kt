@@ -11,13 +11,12 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.itemsIndexed
-import androidx.compose.material.AppBarDefaults
-import androidx.compose.material.IconButton
+import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
@@ -26,14 +25,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.scale
-import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
@@ -43,7 +38,6 @@ import androidx.compose.ui.zIndex
 import coil.compose.AsyncImage
 import org.koin.androidx.compose.koinViewModel
 import ru.kanogor.rickandmortypedia.R
-import ru.kanogor.rickandmortypedia.data.dto.episodes.EpisodeDto
 import ru.kanogor.rickandmortypedia.domain.entity.Gender.Companion.toText
 import ru.kanogor.rickandmortypedia.domain.entity.Status
 import ru.kanogor.rickandmortypedia.domain.entity.Status.Companion.toText
@@ -66,11 +60,9 @@ fun SingleCharacterUi(
     }
 
     val character by singleCharacterViewModel.singleCharacter.collectAsState()
-    val isLoading by singleCharacterViewModel.isLoading.collectAsState()
-    val context = LocalContext.current
-    val episodeList = remember {
-        mutableStateOf<MutableList<EpisodeDto>>(mutableListOf())
-    }
+    val isCharacterLoading by singleCharacterViewModel.isCharacterLoading.collectAsState()
+    val episodeList by singleCharacterViewModel.episodes.collectAsState()
+    val isEpisodesLoading by singleCharacterViewModel.isEpisodesLoading.collectAsState()
     Scaffold(
         topBar = {
             TopAppBar(
@@ -82,31 +74,28 @@ fun SingleCharacterUi(
                 },
                 colors = TopAppBarDefaults.topAppBarColors(containerColor = GreyCard),
                 modifier = Modifier
-                    .shadow(
-                        elevation = AppBarDefaults.TopAppBarElevation,
-                    )
                     .zIndex(8f),
                 navigationIcon = {
                     IconButton(onClick = { component.onBackClick() }) {
                         Icon(
                             imageVector = Icons.Filled.ArrowBack,
                             tint = Color.White,
-                            contentDescription = "arrow_back"
+                            contentDescription = null
                         )
                     }
                 }
             )
         }
-    ) {
+    ) { paddingValue ->
 
-        if (isLoading) {
+        if (isCharacterLoading) {
             LoadingItem()
         } else {
             LazyColumn(
                 modifier = Modifier
                     .fillMaxSize()
                     .background(color = GreyCard)
-                    .padding(top = 60.dp)
+                    .padding(top = paddingValue.calculateTopPadding())
             ) {
                 item {
                     AsyncImage(
@@ -190,18 +179,14 @@ fun SingleCharacterUi(
                         fontWeight = FontWeight(weight = 700)
                     )
                 }
-                val urlList = character?.episode ?: emptyList()
-                val newList =
-                    urlList.take(10) // уменьшено число, так как очень долго грузится страница Рика и Морти(все эпизоды за все сезоны)
-                newList.onEach { item ->
-                    getEpisodeData(
-                        url = item,
-                        context = context,
-                        list = episodeList
-                    )
-                }
-                itemsIndexed(items = episodeList.value) { _, item ->
-                    if (episodeList.value.isNotEmpty()) EpisodeCard(item = item)
+                if (isEpisodesLoading) {
+                    item {
+                        LoadingItem()
+                    }
+                } else {
+                    items(items = episodeList) { item ->
+                        if (episodeList.isNotEmpty()) EpisodeCard(item = item)
+                    }
                 }
             }
         }
