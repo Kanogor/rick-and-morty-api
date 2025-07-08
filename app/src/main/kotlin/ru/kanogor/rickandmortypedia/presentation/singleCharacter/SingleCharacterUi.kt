@@ -40,12 +40,10 @@ import coil.compose.AsyncImage
 import org.koin.androidx.compose.koinViewModel
 import ru.kanogor.rickandmortypedia.R
 import ru.kanogor.rickandmortypedia.domain.entity.CharacterData
-import ru.kanogor.rickandmortypedia.domain.entity.Gender
 import ru.kanogor.rickandmortypedia.domain.entity.Gender.Companion.toText
-import ru.kanogor.rickandmortypedia.domain.entity.LocationCharData
-import ru.kanogor.rickandmortypedia.domain.entity.Origin
 import ru.kanogor.rickandmortypedia.domain.entity.Status
 import ru.kanogor.rickandmortypedia.domain.entity.Status.Companion.toText
+import ru.kanogor.rickandmortypedia.domain.entity.previewCharacterData
 import ru.kanogor.rickandmortypedia.presentation.components.LoadingItem
 import ru.kanogor.rickandmortypedia.presentation.theme.GreyBackground
 import ru.kanogor.rickandmortypedia.presentation.theme.GreyCard
@@ -209,20 +207,7 @@ fun SingleCharacterData(character: CharacterData?) {
 fun SingleCharacterDataPreview() {
     Column {
         SingleCharacterData(
-            character = CharacterData(
-                created = "12.12.12",
-                episode = emptyList(),
-                gender = Gender.MALE,
-                id = 0,
-                image = "",
-                locationCharData = LocationCharData("Earth", ""),
-                name = "Rick",
-                origin = Origin("", ""),
-                status = Status.ALIVE,
-                species = "Human",
-                type = "",
-                url = ""
-            )
+            character = previewCharacterData
         )
     }
 }

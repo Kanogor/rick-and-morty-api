@@ -1,6 +1,5 @@
 package ru.kanogor.rickandmortypedia.common
 
-import android.util.Log
 import kotlinx.serialization.json.Json
 import retrofit2.HttpException
 import retrofit2.Response

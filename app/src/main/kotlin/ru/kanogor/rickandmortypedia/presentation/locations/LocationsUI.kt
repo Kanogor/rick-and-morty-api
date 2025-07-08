@@ -13,6 +13,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.paging.LoadState
@@ -113,4 +114,20 @@ fun LocationListItem(item: LocationData) {
     }
 }
 
-// TODO добавить превью для LocationListItem
+@Preview(
+    showBackground = true,
+    backgroundColor = 0xFFFFFFFF
+)
+@Composable
+fun LocationListItemPreview() {
+    Column {
+        LocationListItem(
+            item = LocationData(
+                dimension = "dimension",
+                id = 0,
+                name = "Earth",
+                type = "Type"
+            )
+        )
+    }
+}

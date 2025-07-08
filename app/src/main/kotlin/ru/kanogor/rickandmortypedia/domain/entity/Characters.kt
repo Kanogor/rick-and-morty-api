@@ -27,6 +27,22 @@ data class CharacterData(
     val created: String,
 )
 
+val previewCharacterData = CharacterData(
+    created = "12.12.12",
+    episode = emptyList(),
+    gender = Gender.MALE,
+    id = 0,
+    image = "",
+    locationCharData = LocationCharData("Earth", ""),
+    name = "Rick",
+    origin = Origin("", ""),
+    status = Status.ALIVE,
+    species = "Human",
+    type = "",
+    url = ""
+)
+
+
 enum class Status {
     ALIVE, DEAD, UNKNOWN;
 
