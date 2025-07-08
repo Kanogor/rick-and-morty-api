@@ -5,7 +5,6 @@ androidTools = "31.10.1"
 decompose = "3.3.0"
 kotlin = "2.1.21"
 coreKtx = "1.16.0"
-glide-compiler = "4.14.2"
 
 # Test
 junit = "4.13.2"
@@ -13,21 +12,20 @@ junitVersion = "1.2.1"
 
 # Compose
 compose = "1.8.3"
-composeMaterial3 = "1.4.0-alpha16"
-composeNavigation = "2.9.0"
+composeNavigation = "2.9.1"
+composeMaterial3 = "1.4.0-alpha17"
 
 # Koin
 koinAndroid = "4.1.0"
 koinAnnotations = "2.1.0"
 
 # Paging
+material3IconsExtended = "1.2.1"
 paging = "3.3.6"
-paging-compose = "3.2.0"
-swiperefreshlayout = "1.1.0"
+paging-compose = "3.3.6"
 
 # Retrofit
 retrofit = "3.0.0"
-okhttp3 = "4.12.0"
 
 # Coroutines
 coroutines = "1.10.2"
@@ -38,18 +36,14 @@ essenty = "2.5.0"
 lifecycleRuntimeKtx = "2.9.1"
 activityCompose = "1.10.1"
 composeBom = "2025.06.01"
-jetbrainsKotlinJvm = "2.1.10"
 appcompat = "1.7.1"
 material = "1.12.0"
-coil = "2.0.0-rc01"
-compose-material = "1.6.0-alpha03"
+coil = "2.7.0"
+compose-material = "1.8.3"
 lifecycle = "2.9.1"
 foundation = "1.8.3"
-serializationVersion = "1.8.1"
-volley = "1.2.1"
-glide = "4.16.0"
-moshi = "1.14.0"
-gson = "2.9.0"
+serializationVersion = "1.9.0"
+moshi = "1.15.2"
 kspVersion = "2.1.21-2.0.1"
 
 [libraries]
@@ -60,30 +54,17 @@ decompose-compose = { module = "com.arkivanov.decompose:extensions-compose", ver
 essenty = { module = "com.arkivanov.essenty:lifecycle-coroutines", version.ref = "essenty" }
 essenty-lifecycle = { module = "com.arkivanov.essenty:lifecycle", version.ref = "essenty" }
 
-# Volley
-volley = { group = "com.android.volley", name = "volley", version.ref = "volley" }
-
-# Glide
-glide = { group = "com.github.bumptech.glide", name = "glide", version.ref = "glide" }
-glide-compiler = { module = "com.github.bumptech.glide:compiler", version.ref = "glide-compiler" }
-
 # Moshi
 moshi = { group = "com.squareup.moshi", name = "moshi", version.ref = "moshi" }
 moshi-codegen = { module = "com.squareup.moshi:moshi-kotlin-codegen", version.ref = "moshi" }
 
-# Gson
-gson = { group = "com.google.code.gson", name = "gson", version.ref = "gson" }
-
 # Paging
 paging-runtime-ktx = { group = "androidx.paging", name = "paging-runtime-ktx", version.ref = "paging" }
-swiperefreshlayout = { group = "androidx.swiperefreshlayout", name = "swiperefreshlayout", version.ref = "swiperefreshlayout" }
-
 
 # Retrofit
 retrofit = { group = "com.squareup.retrofit2", name = "retrofit", version.ref = "retrofit" }
 converter-gson = { group = "com.squareup.retrofit2", name = "converter-gson", version.ref = "retrofit" }
 converter-moshi = { group = "com.squareup.retrofit2", name = "converter-moshi", version.ref = "retrofit" }
-logging-interceptor = { group = "com.squareup.okhttp3", name = "logging-interceptor", version.ref = "okhttp3" }
 
 # Build-logic
 android-gradlePlugin = { group = "com.android.tools.build", name = "gradle", version.ref = "agp" }
@@ -105,12 +86,10 @@ androidx-ui = { group = "androidx.compose.ui", name = "ui" }
 androidx-ui-graphics = { group = "androidx.compose.ui", name = "ui-graphics" }
 androidx-ui-tooling = { group = "androidx.compose.ui", name = "ui-tooling" }
 androidx-ui-tooling-preview = { group = "androidx.compose.ui", name = "ui-tooling-preview" }
-androidx-ui-test-manifest = { group = "androidx.compose.ui", name = "ui-test-manifest" }
 androidx-ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-test-junit4" }
 androidx-material3 = { group = "androidx.compose.material3", name = "material3" }
 compose-material3 = { group = "androidx.compose.material3", name = "material3", version.ref = "composeMaterial3" }
 compose-ui = { group = "androidx.compose.ui", name = "ui-android", version.ref = "compose" }
-navigation-ktx = { group = "androidx.navigation", name = "navigation-common-ktx", version.ref = "composeNavigation" }
 compose-navigation = { group = "androidx.navigation", name = "navigation-compose", version.ref = "composeNavigation" }
 androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
 material = { group = "com.google.android.material", name = "material", version.ref = "material" }

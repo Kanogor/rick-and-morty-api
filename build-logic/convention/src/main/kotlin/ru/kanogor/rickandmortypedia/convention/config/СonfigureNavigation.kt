@@ -8,7 +8,6 @@ import ru.kanogor.rickandmortypedia.convention.utils.implementation
 internal fun Project.configureNavigation() {
 
     dependencies {
-        implementation(LibAlias.NAVIGATION)
         implementation(LibAlias.COMPOSE_NAVIGATION)
     }
 }

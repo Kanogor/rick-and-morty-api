@@ -9,7 +9,7 @@ internal object Config {
     const val MIN_SDK = 26
     const val TARGET_SDK = 35
     const val COMPILE_SDK = 36
-    const val CODE_VERSION = 20_000_005
+    const val CODE_VERSION = 20_000_007
     const val BASE_URL = "\"https://rickandmortyapi.com/api/\""
 
     fun versionName(): String {

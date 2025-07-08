@@ -24,6 +24,5 @@ internal fun Project.configureCompose(commonExtension: CommonExtension<*, *, *, 
     dependencies {
         implementation(LibAlias.COMPOSE_UI)
         implementation(LibAlias.COMPOSE_MATERIAL3)
-        implementation(LibAlias.COMPOSE_MATERIAL3)
     }
 }

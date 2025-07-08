@@ -35,7 +35,7 @@
 
 ***
 
-**In version 2.0 was added Decompose navigation and components** 
+**In version 2.0.7 was added Decompose navigation and components** 
 
 
 *Thanks for watching*
