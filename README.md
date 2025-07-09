@@ -14,7 +14,7 @@
 #### - Main screen(Persons list): #
 
 
-<img src="http://post-images.org/photo-page.php?photo=tF1w4Xp8" width="400"/> 
+<img src="https://habrastorage.org/webt/8z/l-/-z/8zl--znho3uvrr88x0jepr_bv-y.png" width="400"/>
 
 ***
 
@@ -22,8 +22,8 @@
 
 
 <div id="header" align="start">
-<img src="http://post-images.org/photo-page.php?photo=mVeoZrqF" width="400"/> 
-  <img src="http://post-images.org/photo-page.php?photo=FAtq3DGe" width="400"/> 
+<img src="https://habrastorage.org/webt/ne/5u/2d/ne5u2db8ilv5baywpf2r8dok0fw.png" width="400"/> 
+  <img src="https://habrastorage.org/webt/sp/ug/ml/spugmlynnp_8ugsbvrui77r7xso.png" width="400"/> 
   </div> 
 
 ***
@@ -31,7 +31,7 @@
 #### - Second screen(locations list): #
 
 
-<img src="http://post-images.org/photo-page.php?photo=3WQo5Uhp" width="400"/> 
+<img src="https://habrastorage.org/webt/cs/ek/nx/cseknxmrzdvqr-za7lhwhyqy9va.png" width="400"/> 
 
 ***
 
